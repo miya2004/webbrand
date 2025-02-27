@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Design Studio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8e10f;
+            color: #000;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            padding: 15px 30px;
+            background: transparent;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin-left: auto;
+            align-items: center; 
+            padding-top: 25px; /* Adjust this value to fine-tune vertical alignment */
+        }
+        .nav-links li {
+            margin: 0 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            overflow: hidden;
+        }
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .portfolio {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 50px;
+            max-width: 1200px;
+            margin: auto;
+            align-items: center;
+        }
+        .portfolio-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+        }
+        .footer {
+        background: #111;
+        color: white;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    .footer-content h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .footer-contact {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 30px;
+    }
+    .contact-item h4 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .contact-item p a {
+        color: white;
+        text-decoration: none;
+    }
+    .send-request {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        /* Animation Section Styles */
+        .animation-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0;
+            position: relative;
+        }
+        .animation-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        .circle-text {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #f2ad0c;
+            color: white;
+            cursor: pointer;
+        }
+        .intersection {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background-color: #e8f223;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50%;
+            transition: background-color 0.5s ease-in-out;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .animation-container:hover .intersection {
+            background-color: transparent;
+        }
+        /* Adjusted positioning for overlapping circles */
+        #circle-text1 { top: 50%; left: 30%; transform: translate(-50%, -50%); z-index: 1; }
+        #circle-text2 { top: 50%; right: 25%; transform: translate(50%, -50%); z-index: 1; }
+        .intersection { width: 180px; height: 180px; z-index: 0; }
+        
+        .outer-circle, .inner-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px dashed rgb(244, 194, 67);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .outer-circle { width: 500px; height: 500px; }
+        .inner-circle { width: 350px; height: 350px; }
+        
+        .box {
+            position: absolute;
+            width: 140px;
+            height: 50px;
+            background-color: black;
+            color: white;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .box {
+            position: absolute;
+            width: 140px;
+            height: 50px;
+            background-color: black;
+            color: white;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.2s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+        .box:active {
+            transform: scale(1.1);
+        }
+        /* Placing the boxes based on reference image */
+        .box1 { top: 15%; left: 5%; }
+        .box2 { top: 30%; left: 10%; }
+        .box3 { top: 45%; left: 15%; }
+        .box4 { top: 60%; left: 10%; }
+        .box5 { top: 75%; left: 5%; }
+        
+        .box6 { top: 15%; right: 5%; }
+        .box7 { top: 30%; right: 10%; }
+        .box8 { top: 45%; right: 15%; }
+        .box9 { top: 60%; right: 10%; }
+        .box10 { top: 75%; right: 5%; }
+        
+
+        /* team*/
+        .about-team  {
+            padding: 50px;
+            
+            
+        }
+        .about-team__title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .about-team__content {
+            max-width: 800px;
+            margin: auto;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .team-gallery {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .team-member {
+            position: absolute;
+            width: 250px;
+            height: 350px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        .team-member img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+        }
+        .team-member:hover {
+            transform: scale(1.1);
+        }
+        .team-member:nth-child(1) { top: 20%; left: 5%; }
+        .team-member:nth-child(2) { top: 40%; left: 25%; }
+        .team-member:nth-child(3) { top: 15%; right: 10%; }
+        .team-member:nth-child(4) { top: 20%; left: 55%; transform: translateX(-50%); }
+        .team-member:nth-child(5) { top: 60%; right: 15%; }
+
+        .logo {
+            height: 90px; /* Adjust as needed */
+            position: absolute;
+            left: 30px;
+            top: 150px;
+        }
+
+        .carousel-section {
+    padding: 120px 0; /* Increase top & bottom padding */
+    min-height: 700px; /* Ensures enough vertical space */
+    text-align: center;
+    background: #f8e10f; /* Light background for distinction */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.carousel-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+.carousel {
+    position: relative;
+    width: 40vw; /* Reduced width */
+    height: 40vh; /* Reduced height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 800px; /* Adjusted perspective */
+    margin: auto; /* Ensures centering */
+}
+.carousel-inner {
+    width: 35%;
+    height: 80%;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+}
+.carousel img {
+    position: absolute;
+    width: 80%; /* Reduce image size */
+    height: 80%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform-origin: center center;
+}
+
+
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="logo.png" alt="Design Zest Logo" class="logo">
+        <ul class="nav-links">
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Posters</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="WhatsApp Video 2025-02-24 at 11.54.15.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="portfolio">
+        <div class="portfolio-item">
+            <img src="WhatsApp Image 2025-02-13 at 14.40.47 (1).jpeg" alt="Main Project">
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-13 at 09.10.32.jpeg" alt="Project 1"></div>
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-13 at 14.40.47 (1).jpeg" alt="Project 2"></div>
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-13 at 14.45.47 (1).jpeg" alt="Project 3"></div>
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-20 at 10.42.13.jpeg" alt="Project 4"></div>
+        </div>
+    </div>
+    <div class="portfolio">
+        <div class="portfolio-item">
+            <img src="WhatsApp Image 2025-02-13 at 14.40.47 (1).jpeg" alt="Main Project">
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-13 at 09.10.32.jpeg" alt="Project 1"></div>
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-13 at 14.40.47 (1).jpeg" alt="Project 2"></div>
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-13 at 14.45.47 (1).jpeg" alt="Project 3"></div>
+            <div class="portfolio-item"><img src="WhatsApp Image 2025-02-20 at 10.42.13.jpeg" alt="Project 4"></div>
+        </div>
+    </div>
+    <div class="animation-container" id="animationContainer">
+        <div class="outer-circle" id="outerCircle"></div>
+        <div class="inner-circle" id="innerCircle"></div>
+        <div class="circle-text" id="circle-text1">Brand</div>
+        <div class="circle-text" id="circle-text2">Product</div>
+        <div class="intersection" id="masteryArea">Zest Area</div>
+        
+        <a href="sections.html#section1" class="box box1">Web Design</a>
+        <a href="sections.html#section2" class="box box2">Moodboards</a>
+        <a href="sections.html#section3" class="box box3">Brand Guide</a>
+        <a href="sections.html#section4" class="box box4">Brand Strategy</a>
+        <a href="sections.html#section5" class="box box5">UX/UI Design</a>
+
+        <a href="sections.html#section6" class="box box6">Website</a>
+        <a href="sections.html#section7" class="box box7">Video Production</a>
+        <a href="sections.html#section8" class="box box8">Animation</a>
+        <a href="sections.html#section9" class="box box9">App Development</a>
+        <a href="sections.html#section10" class="box box10">Games</a>
+
+    </div>
+
+    <section class="about-team">
+        <h2 class="about-team__title">Our Team</h2>
+        <p class="about-team__content">Our work is conceptually rooted, strategically driven, and executed by creative minds who understand the bigger picture.</p>
+        <div class="team-gallery">
+            <div class="team-member"><img src="WhatsApp Image 2025-02-24 at 09.32.24.jpeg" alt="Team Member 1"></div>
+            <div class="team-member"><img src="WhatsApp Image 2025-02-24 at 09.36.03.jpeg" alt="Team Member 2"></div>
+            <div class="team-member"><img src="WhatsApp Image 2025-02-26 at 10.06.55.jpeg" alt="Team Member 3"></div>
+            <div class="team-member"><img src="IMG_1829.jpg" alt="Team Member 4"></div>
+            <div class="team-member"><img src="WhatsApp Image 2025-02-27 at 13.24.14.jpeg" alt="Team Member 5"></div>
+        </div>
+    </section>
+
+  
+ 
+    <section class="carousel-section">
+        
+        <div class="carousel">
+            <div class="carousel-inner"></div>
+        </div>
+    </section>
+    
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2>Get in touch with us</h2>
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <h4>General Inquiries:</h4>
+                    <p><a href="mailto:info@designzest.com">info@designzest.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>PR & Collaborations:</h4>
+                    <p><a href="mailto:pr@designzest.com">pr@designzest.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Careers:</h4>
+                    <p><a href="mailto:hr@designzest.com">hr@designzest.com</a></p>
+                </div>
+            </div>
+            <button class="send-request">SEND REQUEST</button>
+        </div>
+    
+        
+    </footer>
+    <script>
+    var container = document.getElementById('animationContainer');
+        var masteryArea = document.getElementById('masteryArea');
+        var outerCircle = document.getElementById('outerCircle');
+        var innerCircle = document.getElementById('innerCircle');
+        var brandCircle = document.getElementById('circle-text1');
+        var productCircle = document.getElementById('circle-text2');
+        var boxes = document.querySelectorAll('.box');
+        
+        container.addEventListener('mouseenter', function() {
+            gsap.to(masteryArea, { backgroundColor: 'transparent', duration: 0.5 });
+            gsap.to(brandCircle, { x: -300, duration: 0.5 });
+            gsap.to(productCircle, { x: 300, duration: 0.5 });
+            gsap.to([outerCircle, innerCircle], { opacity: 1, duration: 0.5 });
+            boxes.forEach((box, index) => {
+                gsap.to(box, { opacity: 1, duration: 0.5, delay: index * 0.1 });
+            });
+        });
+        container.addEventListener('mouseleave', function() {
+            gsap.to(masteryArea, { backgroundColor: '#444', duration: 0.5 });
+            gsap.to(brandCircle, { x: 0, duration: 0.5 });
+            gsap.to(productCircle, { x: 0, duration: 0.5 });
+            gsap.to([outerCircle, innerCircle], { opacity: 0, duration: 0.5 });
+            boxes.forEach((box) => {
+                gsap.to(box, { opacity: 0, duration: 0.5 });
+            });
+        });
+
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.querySelector('.carousel-inner');
+        const images = [
+            'posterq.jpeg', 'poster2.jpeg', 'poster3.jpeg', 'poster4.jpeg', 'poster5.jpg',
+            'poster6.jpg'
+        ];
+
+        const totalImages = images.length;
+        const angle = 360 / totalImages; // Distribute evenly in a circle
+        const radius = 450; // Keep spacing but prevent images from growing
+
+        images.forEach((src, i) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.style.transform = `rotateY(${i * angle}deg) translateZ(${radius}px)`; // Removed scale(0.7)
+            carousel.appendChild(img);
+        });
+    });
+
+    var container = document.getElementById('animationContainer');
+        var boxes = document.querySelectorAll('.box');
+        
+        container.addEventListener('mouseenter', function() {
+            boxes.forEach((box, index) => {
+                gsap.to(box, { opacity: 1, duration: 0.5, delay: index * 0.1 });
+            });
+        });
+        
+        container.addEventListener('mouseleave', function() {
+            boxes.forEach((box) => {
+                gsap.to(box, { opacity: 0, duration: 0.5 });
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>

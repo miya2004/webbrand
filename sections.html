@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sections Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f8e10f;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+        #section1 { background-color: #ffd700; }
+        #section2 { background-color: #ffa500; }
+        #section3 { background-color: #ff8c00; }
+        #section4 { background-color: #ff4500; }
+        #section5 { background-color: #ff0000; }
+        #section6 { background-color: #ffd700; }
+        #section7 { background-color: #ffa500; }
+        #section8 { background-color: #ff8c00; }
+        #section9 { background-color: #ff4500; }
+        #section10 { background-color: #ff0000; }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .cards-wrapper {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+        }
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .card {
+            width: 300px;
+            height: 180px;
+            background-color: #f4f5f7;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .card-duration {
+            font-size: 14px;
+            color: #777;
+        }
+        .card-content {
+            font-size: 14px;
+            color: #555;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+        }
+        .card:hover .card-content {
+            opacity: 1;
+            max-height: 100px;
+        }
+        .nav-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <section id="section1">
+        <div class="section-header">
+            <div class="section-title">Web Design</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section2">
+        <div class="section-header">
+            <div class="section-title">Moodboards</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section3">
+        <div class="section-header">
+            <div class="section-title">Brand guide</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section4">
+        <div class="section-header">
+            <div class="section-title">Branding</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section5">
+        <div class="section-header">
+            <div class="section-title">UX/UI Design</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section id="section6">
+        <div class="section-header">
+            <div class="section-title">Website</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section7">
+        <div class="section-header">
+            <div class="section-title">Video Production</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section8">
+        <div class="section-header">
+            <div class="section-title">Animation</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section9">
+        <div class="section-header">
+            <div class="section-title">App Development</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section10">
+        <div class="section-header">
+            <div class="section-title">Games</div>
+            <div>
+                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+            </div>
+        </div>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="cardsContainer">
+                <div class="card">
+                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-header">Web Design Strategy</div>
+                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-header">UX/UI Research</div>
+                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-header">Responsive Design</div>
+                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-header">Prototyping</div>
+                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                </div>
+                <div class="card">
+                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-header">Design Systems</div>
+                    <div class="card-content">Standardized design components for scalable projects.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let index = 0;
+        function nextSlide() {
+            const container = document.getElementById('cardsContainer');
+            if (index < container.children.length - 1) {
+                index++;
+                container.style.transform = `translateX(-${index * 320}px)`;
+            }
+        }
+        function prevSlide() {
+            const container = document.getElementById('cardsContainer');
+            if (index > 0) {
+                index--;
+                container.style.transform = `translateX(-${index * 320}px)`;
+            }
+        }
+    </script>
+</body>
+</html>

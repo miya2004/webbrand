@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand & Product Intersection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+            position: relative;
+        }
+        .animation-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+        }
+        .circle-text {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #222;
+            color: white;
+            cursor: pointer;
+        }
+        .intersection {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background-color: #444;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50%;
+            transition: background-color 0.5s ease-in-out;
+        }
+        .animation-container:hover .intersection {
+            background-color: transparent;
+        }
+        /* Adjusted positioning for overlapping circles */
+        #circle-text1 { top: 50%; left: 30%; transform: translate(-50%, -50%); z-index: 1; }
+        #circle-text2 { top: 50%; right: 30%; transform: translate(50%, -50%); z-index: 1; }
+        .intersection { width: 180px; height: 180px; z-index: 0; }
+        
+        .outer-circle, .inner-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px dashed black;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .outer-circle { width: 500px; height: 500px; }
+        .inner-circle { width: 350px; height: 350px; }
+        
+        .box {
+            position: absolute;
+            width: 140px;
+            height: 50px;
+            background-color: black;
+            color: white;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        /* Placing the boxes based on reference image */
+        .box1 { top: 15%; left: 5%; }
+        .box2 { top: 30%; left: 10%; }
+        .box3 { top: 45%; left: 15%; }
+        .box4 { top: 60%; left: 10%; }
+        .box5 { top: 75%; left: 5%; }
+        
+        .box6 { top: 15%; right: 5%; }
+        .box7 { top: 30%; right: 10%; }
+        .box8 { top: 45%; right: 15%; }
+        .box9 { top: 60%; right: 10%; }
+        .box10 { top: 75%; right: 5%; }
+    </style>
+</head>
+<body>
+    <div class="animation-container" id="animationContainer">
+        <div class="outer-circle" id="outerCircle"></div>
+        <div class="inner-circle" id="innerCircle"></div>
+        <div class="circle-text" id="circle-text1">Brand</div>
+        <div class="circle-text" id="circle-text2">Product</div>
+        <div class="intersection" id="masteryArea">Mastery Area</div>
+        
+        <div class="box box1">Printing Services</div>
+        <div class="box box2">Packaging Design</div>
+        <div class="box box3">Branding</div>
+        <div class="box box4">Brand Strategy</div>
+        <div class="box box5">Video Productions</div>
+        
+        <div class="box box6">Data Science</div>
+        <div class="box box7">Production Planning</div>
+        <div class="box box8">App Design</div>
+        <div class="box box9">GTM Strategy</div>
+        <div class="box box10">Product Writing</div>
+    </div>
+
+    <script>
+        var container = document.getElementById('animationContainer');
+        var masteryArea = document.getElementById('masteryArea');
+        var outerCircle = document.getElementById('outerCircle');
+        var innerCircle = document.getElementById('innerCircle');
+        var brandCircle = document.getElementById('circle-text1');
+        var productCircle = document.getElementById('circle-text2');
+        var boxes = document.querySelectorAll('.box');
+        
+        container.addEventListener('mouseenter', function() {
+            gsap.to(masteryArea, { backgroundColor: 'transparent', duration: 0.5 });
+            gsap.to(brandCircle, { x: -300, duration: 0.5 });
+            gsap.to(productCircle, { x: 300, duration: 0.5 });
+            gsap.to([outerCircle, innerCircle], { opacity: 1, duration: 0.5 });
+            boxes.forEach((box, index) => {
+                gsap.to(box, { opacity: 1, duration: 0.5, delay: index * 0.1 });
+            });
+        });
+        container.addEventListener('mouseleave', function() {
+            gsap.to(masteryArea, { backgroundColor: '#444', duration: 0.5 });
+            gsap.to(brandCircle, { x: 0, duration: 0.5 });
+            gsap.to(productCircle, { x: 0, duration: 0.5 });
+            gsap.to([outerCircle, innerCircle], { opacity: 0, duration: 0.5 });
+            boxes.forEach((box) => {
+                gsap.to(box, { opacity: 0, duration: 0.5 });
+            });
+        });
+    </script>
+</body>
+</html>
