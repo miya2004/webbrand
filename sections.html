@@ -55,7 +55,7 @@
         }
         .card {
             width: 300px;
-            height: 180px;
+            min-height: 180px;
             background-color: #f4f5f7;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -63,10 +63,12 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 20px;
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
         }
         .card:hover {
             transform: scale(1.05);
+            min-height: auto;
         }
         .card-header {
             font-size: 18px;
@@ -80,20 +82,25 @@
         .card-content {
             font-size: 14px;
             color: #555;
-            opacity: 0;
             max-height: 0;
             overflow: hidden;
-            transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+            transition: max-height 0.5s ease-in-out;
         }
         .card:hover .card-content {
-            opacity: 1;
-            max-height: 100px;
+            
+            max-height: 500px;
         }
         .nav-button {
             background: none;
             border: none;
             font-size: 24px;
             cursor: pointer;
+        }
+        .nav-button.left {
+            left: -40px;
+        }
+        .nav-button.right {
+            right: -40px;
         }
     </style>
 </head>
@@ -109,27 +116,27 @@
         <div class="cards-wrapper">
             <div class="cards-container" id="cardsContainer">
                 <div class="card">
-                    <div class="card-duration">1 - 3 weeks</div>
+                    <div class="card-duration">First Step</div>
                     <div class="card-header">Web Design Strategy</div>
                     <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">2 - 4 weeks</div>
+                    <div class="card-duration">Secod Step</div>
                     <div class="card-header">UX/UI Research</div>
                     <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">3 - 5 weeks</div>
+                    <div class="card-duration">Third Step</div>
                     <div class="card-header">Responsive Design</div>
                     <div class="card-content">Techniques to ensure seamless experience across devices.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">4 - 6 weeks</div>
+                    <div class="card-duration">Fourth Step</div>
                     <div class="card-header">Prototyping</div>
                     <div class="card-content">Creating wireframes and interactive prototypes.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">5 - 7 weeks</div>
+                    <div class="card-duration">Fifth Step</div>
                     <div class="card-header">Design Systems</div>
                     <div class="card-content">Standardized design components for scalable projects.</div>
                 </div>
@@ -140,84 +147,90 @@
         <div class="section-header">
             <div class="section-title">Moodboards</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
             </div>
         </div>
         <div class="cards-wrapper">
             <div class="cards-container" id="cardsContainer">
                 <div class="card">
-                    <div class="card-duration">1 - 3 weeks</div>
-                    <div class="card-header">Web Design Strategy</div>
-                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                    <div class="card-duration">First Step</div>
+                    <div class="card-header">Research</div>
+                    <div class="card-content">Research of our client</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">2 - 4 weeks</div>
-                    <div class="card-header">UX/UI Research</div>
-                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                    <div class="card-duration">Second Step</div>
+                    <div class="card-header">Colour Palette</div>
+                    <div class="card-content">Deciding the colour palette of our client.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">3 - 5 weeks</div>
-                    <div class="card-header">Responsive Design</div>
+                    <div class="card-duration">Third Step</div>
+                    <div class="card-header">Gather Photos</div>
                     <div class="card-content">Techniques to ensure seamless experience across devices.</div>
                 </div>
-                <div class="card">
-                    <div class="card-duration">4 - 6 weeks</div>
-                    <div class="card-header">Prototyping</div>
-                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
-                </div>
-                <div class="card">
-                    <div class="card-duration">5 - 7 weeks</div>
-                    <div class="card-header">Design Systems</div>
-                    <div class="card-content">Standardized design components for scalable projects.</div>
-                </div>
-            </div>
+            
         </div>
     </section>
     <section id="section3">
         <div class="section-header">
             <div class="section-title">Brand guide</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+                
             </div>
         </div>
         <div class="cards-wrapper">
             <div class="cards-container" id="cardsContainer">
                 <div class="card">
                     <div class="card-duration">1 - 3 weeks</div>
-                    <div class="card-header">Web Design Strategy</div>
-                    <div class="card-content">Detailed insights on web design methodologies and user experience principles.</div>
+                    <div class="card-header">Brand Strategy and Positioning</div>
+                    <div class="card-content">A strong brand starts with a clear strategy and well-defined positioning. This service focuses on understanding your market, competition, and audience to create actionable strategies that differentiate your brand. By aligning messaging with your business objectives, values, and mission, we establish a framework that supports sustainable growth and builds long-term relevance. Whether for established corporations or small businesses, this service lays the groundwork for effective branding initiatives.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">2 - 4 weeks</div>
-                    <div class="card-header">UX/UI Research</div>
-                    <div class="card-content">Research-based strategies to improve user interaction and engagement.</div>
+                    <div class="card-duration">Second Step</div>
+                    <div class="card-header">Naming & verbal identity</div>
+                    <div class="card-content">Your brand’s name and verbal identity shape how it communicates. This service includes developing memorable names, defining tone of voice, and crafting messaging frameworks that resonate with your audience. We provide practical tools, such as detailed guidelines, band vocabulary, and examples, to help your team maintain consistency across different touchpoints. While trademark registration is outside the scope of this service, we check name uniqueness with available online services. The names we create are designed to align with broader brand strategies and ensure clarity and impact.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">3 - 5 weeks</div>
-                    <div class="card-header">Responsive Design</div>
-                    <div class="card-content">Techniques to ensure seamless experience across devices.</div>
+                    <div class="card-duration">Third Step</div>
+                    <div class="card-header">Creative platform development
+                    </div>
+                    <div class="card-content">Over time, brands need to become more varied in their communication. This service addresses that challenge by creating a flexible, creative platform that refreshes storytelling and visuals without needing constant redesigns. Typically updated annually, this platform ensures your brand remains relevant, engaging, and aligned with current trends. It benefits brands looking to maintain audience interest and optimize resource allocation.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">4 - 6 weeks</div>
-                    <div class="card-header">Prototyping</div>
-                    <div class="card-content">Creating wireframes and interactive prototypes.</div>
+                    <div class="card-duration">Fourth Step</div>
+                    <div class="card-header">Logo Design</div>
+                    <div class="card-content">Your logo is the centerpiece of your visual identity, embodying your brand’s values in a single mark. This service includes designing or refining logos adaptable across digital and physical platforms. We provide detailed usage guidelines, ensuring consistency in all applications. Whether creating a new logo or evolving an existing one, we guarantee it integrates seamlessly into your broader visual identity system.</div>
                 </div>
                 <div class="card">
-                    <div class="card-duration">5 - 7 weeks</div>
-                    <div class="card-header">Design Systems</div>
-                    <div class="card-content">Standardized design components for scalable projects.</div>
+                    <div class="card-duration">Fifth Step</div>
+                    <div class="card-header">Brand illustrations</div>
+                    <div class="card-content">Custom illustrations and iconography bring depth and character to your brand. This service includes designing visual assets that align with your brand identity and are optimized for use across various platforms. By reducing dependency on stock visuals, we create assets that are unique, authentic, and aligned with your brand’s voice. These elements enhance storytelling and strengthen brand recognition.</div>
                 </div>
+            
+            <div class="card">
+                <div class="card-duration">Sixth Step</div>
+                <div class="card-header">Motion design & animation</div>
+                <div class="card-content">Motion design adds a dynamic layer to your branding, making communication more engaging and interactive. This service includes creating animations for logo, product walkthroughs, marketing campaigns, and other touchpoints. By focusing on both functionality and creativity, we ensure motion assets align with your overall brand strategy while enhancing audience engagement.</div>
             </div>
+        </div>
+        <div class="card">
+            <div class="card-duration">Seventh Step</div>
+            <div class="card-header">Brand Guide</div>
+            <div class="card-content">We develop detailed guidelines and centralized brand portals to maintain consistency across all branding efforts. These resources include downloadable templates, approved visual standards, and best practices for implementation. This service simplifies brand management, ensuring that internal teams and external collaborators can uphold the brand’s identity and standards effectively.</div>
+        </div>
+    </div>
         </div>
     </section>
     <section id="section4">
         <div class="section-header">
             <div class="section-title">Branding</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
             </div>
         </div>
         <div class="cards-wrapper">
@@ -254,8 +267,9 @@
         <div class="section-header">
             <div class="section-title">UX/UI Design</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
             </div>
         </div>
         <div class="cards-wrapper">
@@ -298,8 +312,9 @@
         <div class="section-header">
             <div class="section-title">Website</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
             </div>
         </div>
         <div class="cards-wrapper">
@@ -336,8 +351,9 @@
         <div class="section-header">
             <div class="section-title">Video Production</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+                
             </div>
         </div>
         <div class="cards-wrapper">
@@ -374,8 +390,9 @@
         <div class="section-header">
             <div class="section-title">Animation</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
             </div>
         </div>
         <div class="cards-wrapper">
@@ -412,8 +429,9 @@
         <div class="section-header">
             <div class="section-title">App Development</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+                <button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+                
             </div>
         </div>
         <div class="cards-wrapper">
@@ -450,8 +468,9 @@
         <div class="section-header">
             <div class="section-title">Games</div>
             <div>
-                <button class="nav-button" onclick="prevSlide()">&#8592;</button>
-                <button class="nav-button" onclick="nextSlide()">&#8594;</button>
+                <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
             </div>
         </div>
         <div class="cards-wrapper">
@@ -483,24 +502,37 @@
                 </div>
             </div>
         </div>
+        <button class="nav-button" onclick="prevSlide(this)">&#8592;</button>
+<button class="nav-button" onclick="nextSlide(this)">&#8594;</button>
+
     </section>
 
     <script>
-        let index = 0;
-        function nextSlide() {
-            const container = document.getElementById('cardsContainer');
-            if (index < container.children.length - 1) {
-                index++;
-                container.style.transform = `translateX(-${index * 320}px)`;
-            }
-        }
-        function prevSlide() {
-            const container = document.getElementById('cardsContainer');
-            if (index > 0) {
-                index--;
-                container.style.transform = `translateX(-${index * 320}px)`;
-            }
-        }
+        function nextSlide(button) {
+    const section = button.closest("section");
+    const container = section.querySelector(".cards-container");
+    const cards = container.children;
+    let index = parseInt(container.dataset.index) || 0;
+
+    if (index < cards.length - 1) {
+        index++;
+        container.style.transform = `translateX(-${index * (cards[0].offsetWidth + 20)}px)`;
+        container.dataset.index = index;
+    }
+}
+
+function prevSlide(button) {
+    const section = button.closest("section");
+    const container = section.querySelector(".cards-container");
+    let index = parseInt(container.dataset.index) || 0;
+
+    if (index > 0) {
+        index--;
+        container.style.transform = `translateX(-${index * (container.children[0].offsetWidth + 20)}px)`;
+        container.dataset.index = index;
+    }
+}
+
     </script>
 </body>
 </html>
